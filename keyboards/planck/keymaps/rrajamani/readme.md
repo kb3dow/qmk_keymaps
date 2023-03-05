@@ -1,8 +1,8 @@
-# yhaliaw Planck layout
+# kb3dow Planck layout
 
-The layout for Planck by yhaliaw. 
+The layout for Planck by kb3dow. 
 
-Developed and tested on Planck Rev 6.1.
+Developed and tested on Planck Rev 6.2.
 
 ## Features
 
