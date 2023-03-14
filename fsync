@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Script to sync files from the keyboard layout repo to the qmk repo (which is not mine)
+
+# sync the main dir of keyboard layouts
+echo rsync layout files
+rsync -avr ${HOME}/qmk_keymaps/keyboards/ ${HOME}/qmk_firmware/keyboards --exclude *.swp
+
+# copy over the common src files that are not present for each keyboard dir
+echo rsync common/src files
+for der in `find ${HOME}/qmk_firmware/keyboards/ -name rrajamani -type d`
+do
+    rsync -avr ${HOME}/qmk_keymaps/common/src/ $der/src --exclude *.swp
+done
