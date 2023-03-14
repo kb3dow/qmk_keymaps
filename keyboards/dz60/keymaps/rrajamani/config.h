@@ -24,14 +24,14 @@
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LED_MAP {8, 2, 3, 7, 6, 5, 4, 0, 1}
 
-#define MK_COMBINED
 
 #define LEADER_TIMEOUT 200
 #define LEADER_PER_KEY_TIMING
 
 */
-#define TAPPING_TERM 137
-/*
-#define COMBO_COUNT 1
-#define COMBO_TERM 35
-*/
+// #define TAPPING_TERM 137
+#define TAPPING_TERM 200  // Default
+// #define IGNORE_MOD_TAP_INTERRUPT
+
+#define PERMISSIVE_HOLD
+#define MK_COMBINED
