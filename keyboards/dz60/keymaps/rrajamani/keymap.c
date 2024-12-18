@@ -39,6 +39,10 @@ enum custom_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
+/* Ctrl-Command controls
+ * CG_SWAP: Swap control with GUI on both sides
+ * CG_NORM: UnSwap control with GUI
+ */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LYR0] = LAYOUT(
@@ -52,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LYR1] = LAYOUT(
         TO(DFLYR), KC_F1, KC_F2,   KC_F3,   KC_F4,    KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11 ,  KC_F12 , KC_INS , KC_DEL,
         _______, _______, MS_BTN1, MS_UP,   MS_BTN2,  _______, KC_END , KC_PGDN, KC_PGUP, KC_HOME, KC_MPLY,  KC_MRWD,  KC_MFFD, KC_DEL ,
-        _______, _______, MS_LEFT, MS_DOWN, MS_RIGHT, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, SCRL_LCK, KC_PSCR,  _______,
+        CG_NORM, _______, MS_LEFT, MS_DOWN, MS_RIGHT, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, SCRL_LCK, KC_PSCR,  _______,
         KC_CAPS, _______, _______, _______, _______,  _______, KC_SPC,  _______, KC_MUTE, KC_VOLD, KC_VOLU,  TO(LYR2), _______, _______,
         _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______
 	),
@@ -107,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LYR2] = LAYOUT(                                                     
         TO(DFLYR), TO(1), TO(2), TO(3), TO(4), TO(5), TO(6), TO(7), TO(8), TO(9), TO(10), TO(11), TO(12),   KC_BRK, SCRL_LCK,
         _______, RGB_M_P, _______, _______,  _______,  _______, _______, _______, _______, _______, BL_TOGG, BL_DEC , BL_INC , QK_BOOT,
-        _______, RGB_M_B, _______, _______,  _______,  _______, RGB_HUD, RGB_SAD, RGB_SAI, RGB_HUI, _______, _______, _______,
+        CG_SWAP, RGB_M_B, _______, _______,  _______,  _______, RGB_HUD, RGB_SAD, RGB_SAI, RGB_HUI, _______, _______, _______,
         _______, _______, RGB_M_R, RGB_M_SW, RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, _______, _______,
         _______, _______, _______, _______,  _______,  _______, _______, _______, _______, _______, _______),
 };
