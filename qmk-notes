@@ -1,0 +1,21 @@
+# To rsync keymaps from my GIT to QMK git working directory
+cd /home/qmk/qmk_keymaps
+# Use that as the base dir and modify the keycaps for whichever keyboard needs changing
+# run ./fsync in that directory
+# followed by 
+qmk compile
+qmk flash
+# push to github as needed
+#
+#What fsync does
+###rsync -av ~/qmk_keymaps/keyboards/ ~/qmk_firmware/keyboards --exlude \*.swp
+#SSH_AUTH_SOCK=/tmp/ssh-QbRlTjR61WqA/agent.78; export SSH_AUTH_SOCK;
+
+# To change keyboard to planck
+qmk config user.keyboard=planck/rev6_drop
+
+# To change keyboard to kbdfans dz60
+qmk config user.keyboard=dz60
+
+# To view qmk config
+qmk config
