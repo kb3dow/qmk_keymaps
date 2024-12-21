@@ -53,6 +53,11 @@ float planck_sound[][2] = SONG(PLANCK_SOUND);
 #define SPC_LWR LT(_LOWER, KC_SPC)
 #define SPC_RAS LT(_RAISE, KC_SPC)
 
+/* Ctrl-Command controls
+ * CG_SWAP: Swap control with GUI on both sides
+ * CG_NORM: UnSwap control with GUI
+ */
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base
      * ,-----------------------------------------------------------------------------------.
@@ -117,20 +122,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Adjust (Lower + Raise)
      * ,-----------------------------------------------------------------------------------.
-     * |      | Reset| Debug| Clear|  RGB | HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|      |
+     * |      |      | Debug| Clear|  RGB | HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-| Reset|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |Aud on|Audoff| Swap | Norm |      |      |      |      |      |
+     * |CGSWAP|      |      |Aud on|Audoff| Swap | Norm |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |Mus on|Musoff| NKRO | 6KRO |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |      |      |      |      |      |      |      |      |
+     * |      |CGNORM|      |      |      |      |      |      |      |      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_ADJUST] = LAYOUT_planck_grid(
-        _______, QK_BOOT, DB_TOGG, EE_CLR,  RGB_TOG, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______,
-        _______, XXXXXXX, XXXXXXX, AU_ON,   AU_OFF,  AG_SWAP, AG_NORM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+        _______, _______, DB_TOGG, EE_CLR,  RGB_TOG, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, QK_BOOT,
+        CG_SWAP, XXXXXXX, XXXXXXX, AU_ON,   AU_OFF,  AG_SWAP, AG_NORM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         _______, XXXXXXX, XXXXXXX, MU_ON,   MU_OFF,  NK_ON,   NK_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+        _______, CG_NORM, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     )
 };
 
