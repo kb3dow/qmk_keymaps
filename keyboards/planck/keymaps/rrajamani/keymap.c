@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [_ADJUST] = LAYOUT_planck_grid(
-        _______, _______, DB_TOGG, EE_CLR,  RGB_TOG, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, QK_BOOT,
+        _______, QK_BOOT, DB_TOGG, EE_CLR,  RGB_TOG, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, QK_BOOT,
         CG_SWAP, XXXXXXX, XXXXXXX, AU_ON,   AU_OFF,  AG_SWAP, AG_NORM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         _______, XXXXXXX, XXXXXXX, MU_ON,   MU_OFF,  NK_ON,   NK_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         _______, CG_NORM, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -187,44 +187,32 @@ void keyboard_post_init_user(void) {
     rgblight_set_layer_state(0, true);
 }
 
-bool leader_found;
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        leading      = false;
-        leader_found = false;
-        SEQ_ONE_KEY(L_RESET) {
-            leader_found = true;
-            reset_keyboard();
-        }
-        else
-            SEQ_ONE_KEY(KC_DEL) {
-            leader_found = true;
-            layer_clear();
-        }
-        else
-            SEQ_ONE_KEY(LOWER) {
-            leader_found = true;
-            layer_on(_LOWER);
-        }
-        else
-            SEQ_ONE_KEY(RAISE) {
-            leader_found = true;
-            layer_on(_RAISE);
-        }
-        leader_end();
-    }
-}
-
-void leader_end(void) {
-    // Plays sound on if leader sequence found.
-    if (leader_found) {
-#ifdef AUDIO_ENABLE
-        PLAY_SONG(planck_sound);
-#endif
-    }
-}
+// Example of code using leader - use KC_LEAD in keymap above
+// void leader_end_user(void) {
+//    if (leader_sequence_one_key(KC_F)) {
+//        // Leader, f => Types the below string
+//        SEND_STRING("QMK is awesome.");
+//    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
+//        // Leader, d, d => Ctrl+A, Ctrl+C
+//        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+//    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+//        // Leader, d, d, s => Types the below string
+//        SEND_STRING("https://start.duckduckgo.com\n");
+//    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
+//        // Leader, a, s => GUI+S
+//        tap_code16(LGUI(KC_S));
+//    }
+//  // Call leader_end() ; // if needed
+//}
+//
+//void leader_end(void) {
+//    // Plays sound on if leader sequence found.
+//    if (leader_found) {
+//#ifdef AUDIO_ENABLE
+//        PLAY_SONG(planck_sound);
+//#endif
+//    }
+//}
 
 bool led_update_user(led_t led_state) {
     // Turn on RBG for capslock.

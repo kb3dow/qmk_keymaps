@@ -1,4 +1,4 @@
-SRC += src/combos.c
+INTROSPECTION_KEYMAP_C = src/combos.c
 LEADER_ENABLE = yes
 
 RGBLIGHT_ENABLE = yes
@@ -7,3 +7,4 @@ DIP_SWITCH_ENABLE = no
 COMMAND_ENABLE = no
 COMBO_ENABLE = yes
 TAP_DANCE_ENABLE = no
+CAPS_WORD_ENABLE = yes  # Ref:  https://docs.qmk.fm/features/caps_word

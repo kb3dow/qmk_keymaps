@@ -17,5 +17,8 @@ qmk config user.keyboard=planck/rev6_drop
 # To change keyboard to kbdfans dz60
 qmk config user.keyboard=dz60
 
+# Set the keymap to my username
+qmk config user.keymap=rrajamani
+
 # To view qmk config
 qmk config
