@@ -1,4 +1,4 @@
-#include "dz60.h"
+#include QMK_KEYBOARD_H
 
 //RR: Idea from 
 // https://www.reddit.com/r/olkb/comments/8cgr26/is_there_a_better_way_taphold_q/
@@ -6,8 +6,8 @@
 //    https://www.keebtalk.com/t/show-me-your-favorite-qmk-hacks/2682/48?u=kb3dow
 
 // Timers for tap detection in process_record_user
-uint16_t lalt_timer;
-uint16_t ralt_timer;
+// uint16_t lalt_timer;
+// uint16_t ralt_timer;
 
 // create some custom keycodes for your keymap
 enum custom_keycodes {
@@ -110,85 +110,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
     [LYR2] = LAYOUT(                                                     
         TO(DFLYR), TO(1), TO(2), TO(3), TO(4), TO(5), TO(6), TO(7), TO(8), TO(9), TO(10), TO(11), TO(12),   KC_BRK, SCRL_LCK,
-        _______, RGB_M_P, _______, _______,  _______,  _______, _______, _______, _______, _______, BL_TOGG, BL_DEC , BL_INC , QK_BOOT,
+        _______, RGB_M_P, _______, _______,  _______,  _______, _______, _______, _______, _______, BL_TOGG, BL_DOWN , BL_UP , QK_BOOT,
         CG_SWAP, RGB_M_B, _______, _______,  _______,  _______, RGB_HUD, RGB_SAD, RGB_SAI, RGB_HUI, _______, _______, _______,
         _______, _______, RGB_M_R, RGB_M_SW, RGB_M_SN, RGB_M_K, RGB_M_X, RGB_M_G, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, _______, _______,
         _______, _______, _______, _______,  _______,  _______, _______, _______, _______, _______, _______),
 };
-
-
-// Runs just one time when the keyboard initializes.
-//void matrix_init_user(void) {
-//};
-
-// Runs constantly in the background, in a loop.
-//void matrix_scan_user(void) {
-//    LEADER_DICTIONARY() {
-//        leading      = false;
-//        leader_found = false;
-//        SEQ_ONE_KEY(L_RESET) {
-//            leader_found = true;
-//            reset_keyboard();
-//        }
-//        else
-//            SEQ_ONE_KEY(KC_DEL) {
-//            leader_found = true;
-//            layer_clear();
-//        }
-//        else
-//            SEQ_ONE_KEY(LOWER) {
-//            leader_found = true;
-//            layer_on(_LOWER);
-//        }
-//        else
-//            SEQ_ONE_KEY(RAISE) {
-//            leader_found = true;
-//            layer_on(_RAISE);
-//        }
-//        leader_end();
-//    }
-//};
-
-/*
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-  switch(keycode) {
-    case PREV_DESKTOP:
-      if (record->event.pressed) {
-        // Activate LALT
-        lalt_timer = timer_read();
-        SEND_STRING(SS_DOWN(X_LALT));
-      } else {
-        // Deactivate LALT
-        SEND_STRING(SS_UP(X_LALT));
-        // If the action was a tap
-        //TBD if (timer_elapsed(lalt_timer) < TAPPING_TERM) {
-          //TBD SEND_STRING(SS_PREV_DESKTOP);
-        //TBD }
-      }
-      return false;
-      break;
-
-    case NEXT_DESKTOP:
-      if (record->event.pressed) {
-        // Activate RALT
-        ralt_timer = timer_read();
-        SEND_STRING(SS_DOWN(X_RALT));
-      } else {
-        // Deactivate RALT
-        SEND_STRING(SS_UP(X_RALT));
-        // If the action was a tap
-        //TBD if (timer_elapsed(ralt_timer) < TAPPING_TERM) {
-          //TBD SEND_STRING(SS_NEXT_DESKTOP);
-        //TBD }
-      }
-      return false;
-      break;
-
-    default:
-      break;
-  }
-  return true;
-}
-*/
-
