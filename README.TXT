@@ -17,6 +17,9 @@ qmk config user.keyboard=planck/rev6_drop
 # To change keyboard to kbdfans dz60
 qmk config user.keyboard=dz60
 
+# To change keyboard to keycrhon q9 plus with encoder
+qmk config user.keyboard=keychron/q9_plus/ansi_encoder/
+
 # Set the keymap to my username
 qmk config user.keymap=rrajamani
 
